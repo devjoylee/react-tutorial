@@ -1,4 +1,5 @@
 import React from 'react' // export default
 import ReactDom from 'react-dom'
+import App from './app'
 
-ReactDom.render(<h1>Hello React</h1>, document.getElementById('app'))
+ReactDom.render(<App />, document.getElementById('app'))
