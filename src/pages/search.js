@@ -1,7 +1,14 @@
 import React from 'react'
+import SearchInput from '../components/search/input'
+import RecentSearchList from '../components/search/recent-search-list'
 
 function SearchPage() {
-  return <h3>SearchPage</h3>
+  return (
+    <>
+      <SearchInput />
+      <RecentSearchList />
+    </>
+  )
 }
 
 export default SearchPage
