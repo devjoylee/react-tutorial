@@ -1,20 +1,23 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import logo from '../../images/logo.png'
 
 // const logo = require('../images/logo.png')
-const MainLogo = styled.div`
-  width: 100%;
-  margin: 50px 0;
+const LogoContainer = styled.div`
+  margin: 40px 0;
   text-align: center;
-  font-size: 30px;
-  font-weight: bold;
+  & > img {
+    width: 180px;
+  }
 `
 
 function Logo() {
   return (
     <Link to="/">
-      <MainLogo>NAVER{/* <img src={logo} alt="메인페이지 로고" /> */}</MainLogo>
+      <LogoContainer>
+        <img src={logo} alt="메인페이지 로고" />
+      </LogoContainer>
     </Link>
   )
 }
