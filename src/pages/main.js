@@ -6,15 +6,9 @@ import SearchBox from '../components/main/search-box'
 function MainPage() {
   return (
     <>
-      <a href="/mypage">
-        <NavBtn />
-      </a>
-      <a href="/">
-        <Logo />
-      </a>
-      <a href="/search">
-        <SearchBox />
-      </a>
+      <NavBtn />
+      <Logo />
+      <SearchBox />
     </>
   )
 }

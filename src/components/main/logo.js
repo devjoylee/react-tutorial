@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 // const logo = require('../images/logo.png')
@@ -12,7 +13,9 @@ const MainLogo = styled.div`
 
 function Logo() {
   return (
-    <MainLogo>NAVER{/* <img src={logo} alt="메인페이지 로고" /> */}</MainLogo>
+    <Link to="/">
+      <MainLogo>NAVER{/* <img src={logo} alt="메인페이지 로고" /> */}</MainLogo>
+    </Link>
   )
 }
 

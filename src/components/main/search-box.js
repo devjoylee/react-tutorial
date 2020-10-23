@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const Box = styled.div`
@@ -10,7 +11,11 @@ const Box = styled.div`
 `
 
 function SearchBox() {
-  return <Box />
+  return (
+    <Link to="/search">
+      <Box />
+    </Link>
+  )
 }
 
 export default SearchBox
