@@ -41,21 +41,22 @@ const History = styled.div`
   }
 `
 
-function RecentSearchList() {
+function RecentSearchList({ keywords }) {
+  console.log(keywords)
   return (
     <ListContainer>
       <Title>
         <p>최근 검색어</p>
         <p>전체삭제</p>
       </Title>
-      <History>
-        <p>아이유</p>
-        <button>삭제</button>
-      </History>
-      <History>
-        <p>금요일에 만나요</p>
-        <button>삭제</button>
-      </History>
+      {keywords.map(({ id, label }) => {
+        return (
+          <History key={id}>
+            <p>{label}</p>
+            <button>삭제</button>
+          </History>
+        )
+      })}
     </ListContainer>
   )
 }
