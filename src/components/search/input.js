@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -27,13 +27,32 @@ const Input = styled.input`
   }
 `
 
-function SearchInput() {
+function SearchInput({ onAddKeyword }) {
+  const [text, setText] = useState('')
+
+  const handleText = (event) => {
+    setText(event.target.value)
+  }
+
+  const handleEnter = (event) => {
+    if (text && event.keyCode === 13) {
+      onAddKeyword(text)
+      setText('')
+    }
+  }
+
   return (
     <SearchContainer>
       <Link to="/">
         <Icon>👈</Icon>
       </Link>
-      <Input type="text" placeholder="검색어를 입력해주세요" />
+      <Input
+        type="text"
+        placeholder="검색어를 입력해주세요"
+        value={text}
+        onChange={handleText}
+        onKeyDown={handleEnter}
+      />
       <Icon>🔍</Icon>
     </SearchContainer>
   )

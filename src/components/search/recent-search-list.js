@@ -42,7 +42,6 @@ const History = styled.div`
 `
 
 function RecentSearchList({ keywords }) {
-  console.log(keywords)
   return (
     <ListContainer>
       <Title>
