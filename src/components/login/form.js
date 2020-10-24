@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { useHistory } from 'react-router-dom'
+
+import { useUserContext } from '../../contexts/user-context'
 
 const Container = styled.div`
   margin-top: 100px;
@@ -32,9 +35,17 @@ const Button = styled.div`
   border: none;
   border-radius: 0;
   background-color: #03c75a;
+
+  ${({ disabled }) =>
+    disabled &&
+    `
+    background-color: #efefef;
+  `}
 `
 
 function Form() {
+  const { setUser } = useUserContext()
+  const history = useHistory()
   const [formValues, setFormValues] = useState({
     id: '',
     password: '',
@@ -48,6 +59,21 @@ function Form() {
       [id]: value,
     })
   }
+
+  const handleSubmit = () => {
+    // 1. 요청
+    // 2. 성공 -> setUser -> main
+    // 3. 실패 -> alert
+    console.log('로그인 요청')
+
+    setUser({
+      id,
+      password,
+    })
+    history.replace('/')
+  }
+
+  const isSubmitable = id && password
 
   return (
     <Container>
@@ -64,7 +90,12 @@ function Form() {
         placeholder="비밀번호를 입력해주세요"
         onChange={handleFormValues}
       />
-      <Button>로그인</Button>
+      <Button
+        disabled={!isSubmitable}
+        onClick={isSubmitable ? handleSubmit : () => {}}
+      >
+        로그인
+      </Button>
     </Container>
   )
 }
