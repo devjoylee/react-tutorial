@@ -19,10 +19,26 @@ function SearchPage() {
     ])
   }
 
+  const handleRemoveKeyword = (id) => {
+    setKeywords(
+      keywords.filter((keyword) => {
+        return keyword.id !== id
+      }),
+    )
+  }
+
+  const handleClearList = () => {
+    setKeywords([])
+  }
+
   return (
     <div>
       <SearchInput keywords={keywords} onAddKeyword={handleAddKeyword} />
-      <RecentSearchList keywords={keywords} />
+      <RecentSearchList
+        keywords={keywords}
+        onClearList={handleClearList}
+        onRemoveKeyword={handleRemoveKeyword}
+      />
     </div>
   )
 }

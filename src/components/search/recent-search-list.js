@@ -41,21 +41,35 @@ const History = styled.div`
   }
 `
 
-function RecentSearchList({ keywords }) {
+function RecentSearchList({ keywords, onClearList, onRemoveKeyword }) {
+  // if (!keywords.length) {
+  //   return <div>최근 검색어가 없습니다</div>
+  // }
+
   return (
     <ListContainer>
       <Title>
         <p>최근 검색어</p>
-        <p>전체삭제</p>
+        <p onClick={onClearList}>전체삭제</p>
       </Title>
-      {keywords.map(({ id, label }) => {
-        return (
-          <History key={id}>
-            <p>{label}</p>
-            <button>삭제</button>
-          </History>
-        )
-      })}
+      {keywords.length > 0 ? (
+        keywords.map(({ id, label }) => {
+          return (
+            <History key={id}>
+              <p>{label}</p>
+              <button
+                onClick={() => {
+                  onRemoveKeyword(id)
+                }}
+              >
+                삭제
+              </button>
+            </History>
+          )
+        })
+      ) : (
+        <div>최근 검색어가 없습니다</div>
+      )}
     </ListContainer>
   )
 }
