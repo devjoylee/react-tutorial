@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import styled from 'styled-components'
+import GlobalStyles from './components/global-styles'
 
 import LoginPage from './pages/login'
 import MainPage from './pages/main'
@@ -15,6 +16,7 @@ const Container = styled.div`
 function App() {
   return (
     <Container>
+      <GlobalStyles />
       <Router>
         <Switch>
           <Route exact path="/" component={MainPage} />
