@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -33,11 +33,37 @@ const Button = styled.div`
   border-radius: 0;
   background-color: #03c75a;
 `
+
 function Form() {
+  const [formValues, setFormValues] = useState({
+    id: '',
+    password: '',
+  })
+
+  const { id, password } = formValues
+
+  const handleFormValues = ({ target: { id, value } }) => {
+    setFormValues({
+      ...formValues,
+      [id]: value,
+    })
+  }
+
   return (
     <Container>
-      <Input placeholder="아이디를 입력해주세요" />
-      <Input placeholder="비밀번호를 입력해주세요" />
+      <Input
+        id="id"
+        value={id}
+        placeholder="아이디를 입력해주세요"
+        onChange={handleFormValues}
+      />
+      <Input
+        id="password"
+        value={password}
+        type="password"
+        placeholder="비밀번호를 입력해주세요"
+        onChange={handleFormValues}
+      />
       <Button>로그인</Button>
     </Container>
   )
