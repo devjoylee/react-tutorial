@@ -7,6 +7,7 @@ import LoginPage from './pages/login'
 import MainPage from './pages/main'
 import MyPage from './pages/mypage'
 import SearchPage from './pages/search'
+import SignupPage from './pages/signup'
 import Route from './components/route'
 
 const Container = styled.div`
@@ -23,6 +24,7 @@ function App() {
           <Route exact path="/" component={MainPage} />
           <Route path="/login" component={LoginPage} />
           <Route auth path="/mypage" component={MyPage} />
+          <Route path="/signup" component={SignupPage} />
           <Route path="/search" component={SearchPage} />
         </Switch>
       </Router>
