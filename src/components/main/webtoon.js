@@ -48,7 +48,17 @@ function Webtoons() {
     return null
   }
 
-  return <ScrollContainer></ScrollContainer>
+  return (
+    <ScrollContainer>
+      {webtoons.map(({ id, title, image, author }) => (
+        <WebtoonContainer key={id}>
+          <Image src={image} alt="메인이미지" />
+          <Title>{title}</Title>
+          <Author>{author}</Author>
+        </WebtoonContainer>
+      ))}
+    </ScrollContainer>
+  )
 }
 
 export default Webtoons
