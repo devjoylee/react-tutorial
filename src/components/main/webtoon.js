@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
+
+import { fetchWebtoons } from './service'
 
 const ScrollContainer = styled.div`
   padding: 20px;
@@ -30,5 +32,23 @@ const Author = styled.div`
   font-size: 14px;
 `
 function Webtoons() {
+  const [webtoons, setWebtoons] = useState([])
+
+  useEffect(() => {
+    //useEffect의 callback 은 async를 지원하지 않는다 => 별도의 함수 만듬
+    async function fetchAndSetWebtoons() {
+      const data = await fetchWebtoons()
+      setWebtoons(data)
+    }
+
+    fetchAndSetWebtoons()
+  }, [])
+
+  if (!webtoons.length) {
+    return null
+  }
+
   return <ScrollContainer></ScrollContainer>
 }
+
+export default Webtoons
