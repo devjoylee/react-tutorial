@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 
 import { useUserContext } from '../../contexts/user-context'
-import { fetchLogin } from './service'
+import { requestSignUp } from './service'
 
 const Container = styled.div`
   margin-top: 100px;
@@ -50,9 +50,11 @@ function Form() {
   const [formValues, setFormValues] = useState({
     id: '',
     password: '',
+    rePassword: '',
+    name: '',
   })
 
-  const { id, password } = formValues
+  const { id, password, rePassword, name } = formValues
 
   const handleFormValues = ({ target: { id, value } }) => {
     setFormValues({
@@ -62,38 +64,42 @@ function Form() {
   }
 
   const handleSubmit = async () => {
-    try {
-      const user = await fetchLogin({ id, password }) // 로그인 요청
-
-      setUser(user)
-
-      history.replace('/')
-    } catch (error) {
-      console.log('error', error)
-      window.alert(error) // 에러
+    if (await requestSignUp({ id, password, name })) {
+      history.push('/login')
+    } else {
+      window.alert('회원가입에 실패하였습니다')
     }
-    // setUser({
-    //   id,
-    //   password,
-    // })
-    // history.replace('/')
   }
 
-  const isSubmitable = id && password
+  const isMatchedPassword = password === rePassword
+  const isSubmitable = isMatchedPassword && id && password && name
 
   return (
     <Container>
       <Input
         id="id"
-        value={id}
         placeholder="아이디를 입력해주세요"
+        value={id}
         onChange={handleFormValues}
       />
       <Input
         id="password"
-        value={password}
         type="password"
         placeholder="비밀번호를 입력해주세요"
+        value={password}
+        onChange={handleFormValues}
+      />
+      <Input
+        id="rePassword"
+        type="password"
+        placeholder="비밀번호를 한번 더 입력해주세요"
+        value={rePassword}
+        onChange={handleFormValues}
+      />
+      <Input
+        id="name"
+        placeholder="이름을 입력해주세요"
+        value={name}
         onChange={handleFormValues}
       />
       <Button
