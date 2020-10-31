@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 import { fetchRecommendWebtoons } from './service'
+import { useUserContext } from '../../contexts/user-context'
 
 const ScrollContainer = styled.div`
   padding: 20px;
@@ -33,6 +34,9 @@ const Author = styled.div`
 `
 function RecommendWebtoons() {
   const [webtoons, setWebtoons] = useState([])
+  const {
+    user: { name },
+  } = useUserContext()
 
   useEffect(() => {
     //useEffect의 callback 은 async를 지원하지 않는다 => 별도의 함수 만듬
@@ -50,7 +54,7 @@ function RecommendWebtoons() {
 
   return (
     <div>
-      <div>ㅌㅌㅌ님을 위한 추천작</div>
+      <div>{name}님을 위한 추천작</div>
       <ScrollContainer>
         {webtoons.map(({ id, title, image, author }) => (
           <WebtoonContainer key={id}>
