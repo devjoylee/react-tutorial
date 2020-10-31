@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 
 import { useUserContext } from '../../contexts/user-context'
+import { fetchLogin } from './service'
 
 const Container = styled.div`
   margin-top: 100px;
@@ -61,16 +62,13 @@ function Form() {
   }
 
   const handleSubmit = () => {
-    // 1. 요청
-    // 2. 성공 -> setUser -> main
-    // 3. 실패 -> alert
-    console.log('로그인 요청')
+    fetchLogin({ id, password }) // 로그인 요청
 
-    setUser({
-      id,
-      password,
-    })
-    history.replace('/')
+    // setUser({
+    //   id,
+    //   password,
+    // })
+    // history.replace('/')
   }
 
   const isSubmitable = id && password
