@@ -61,9 +61,16 @@ function Form() {
     })
   }
 
-  const handleSubmit = () => {
-    fetchLogin({ id, password }) // 로그인 요청
+  const handleSubmit = async () => {
+    try {
+      const user = await fetchLogin({ id, password }) // 로그인 요청
 
+      setUser(user)
+      history.replace('/')
+    } catch (error) {
+      console.log('error', error)
+      window.alert(error) // 에러
+    }
     // setUser({
     //   id,
     //   password,
