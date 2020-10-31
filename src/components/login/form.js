@@ -66,6 +66,7 @@ function Form() {
       const user = await fetchLogin({ id, password }) // 로그인 요청
 
       setUser(user)
+
       history.replace('/')
     } catch (error) {
       console.log('error', error)
