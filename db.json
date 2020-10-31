@@ -1,16 +1,9 @@
 {
   "users": [
     {
-      "id": "olaf",
+      "id": "joy",
       "password": "1234",
-      "name": "고석진",
-      "image": "https://img1.daumcdn.net/thumb/C500x500.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Ree/image/3j-gZIYF4g8IwLcZ8-cJyd-5REI.jpg"
-    },
-    {
-      "id": "tjrwls0710",
-      "password": "1234",
-      "name": "고석진",
-      "image": "https://img1.daumcdn.net/thumb/C500x500.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/Ree/image/3j-gZIYF4g8IwLcZ8-cJyd-5REI.jpg"
+      "name": "이주영"
     }
   ],
   "webtoons": [
